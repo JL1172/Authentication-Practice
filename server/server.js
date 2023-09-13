@@ -22,10 +22,10 @@ function authenticator(req, res, next) {
 
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-  if (username === "bloom" && password === "tech") {
+  if (username === "jacob" && password === "12341234") {
     req.loggedIn = true;
     res.status(200).json({
-      username: "BloomTech",
+      username: "Jacob",
       role: "editor",
       token: token
     });
