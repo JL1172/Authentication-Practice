@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { axiosWithAuth } from "./util/axiosWithAuth";
 import { ProfileCard } from "./styling/styledComponents";
+import {Spinner} from "reactstrap"
 
 async function fetchProfileData(url) {
     const res = await axios.get(url)
@@ -16,6 +17,7 @@ export default class UserComponent extends React.Component {
     constructor() {
         super();
         this.state = {
+            fetching : false,
             linkedin: "",
             linkedinUrl: "",
             github: "",
@@ -25,6 +27,7 @@ export default class UserComponent extends React.Component {
         }
     }
     componentDidMount() {
+        this.setState({...this.state, fetching : true})
         axiosWithAuth().get("http://localhost:5001/api/data")
             .then(res => {
                 const data1 = res.data.data[0];
@@ -32,12 +35,27 @@ export default class UserComponent extends React.Component {
                     ...this.state, linkedin: data1.linkedin, linkedinUrl: data1.linkedinUrl,
                     github: data1.github, githubUrl: data1.githubUrl, gitHubApi: data1.gitHubApi
                 })
-                fetchProfileData(data1.gitHubApi).then(res => this.setState({ ...this.state, userCardInformation: res.data }))
+                fetchProfileData(data1.gitHubApi).then(res => this.setState({ ...this.state, userCardInformation: res.data,fetching : false, }))
+                
             }).catch(err => console.error(err.message));
     }
     render() {
         return (
             <ProfileCard style={{ marginTop: "5rem", fontSize: "50px" }}>
+                {this.state.fetching ? 
+                <>
+                <Spinner style = {{width : "6rem", height : "6rem"}}
+                className="m-5"
+                color="primary"
+              >
+                Loading...
+              </Spinner>
+              <div style = {{marginLeft : "1rem",color : "lavender", fontSize : "30px"}}>
+              Fetching Data...
+              </div>
+              </>
+                : 
+                <>
                 <div id="headline">
                     {this.state.github}
                 </div>
@@ -59,7 +77,7 @@ export default class UserComponent extends React.Component {
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Github-circle_%28CoreUI_Icons_v1.0.0%29.svg/2048px-Github-circle_%28CoreUI_Icons_v1.0.0%29.svg.png" />
                         </a>
                     </div>
-                </div>
+                </div></>}
             </ProfileCard>
         )
     }
