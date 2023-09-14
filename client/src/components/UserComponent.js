@@ -36,7 +36,6 @@ export default class UserComponent extends React.Component {
             }).catch(err => console.error(err.message));
     }
     render() {
-        console.log(this.state.linkedinUrl)
         return (
             <ProfileCard style={{ marginTop: "5rem", fontSize: "50px" }}>
                 <div id="headline">
@@ -49,11 +48,15 @@ export default class UserComponent extends React.Component {
                     </span>{this.state.userCardInformation.bio}</div>
                 </div>
                 <div id="main">
-                    <div>
                         <h3>Social</h3>
+                    <div id = "social">
                         <a target = "_blank" href = {this.state.linkedinUrl}>
                         <img title="My LInkedIn Profile"
                             src="https://static.vecteezy.com/system/resources/previews/021/492/181/original/linkedin-logo-free-download-free-png.png" />
+                        </a>
+                        <a target = "_blank" href = {this.state.userCardInformation.html_url}>
+                        <img id = "second" title="My Github Profile"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Github-circle_%28CoreUI_Icons_v1.0.0%29.svg/2048px-Github-circle_%28CoreUI_Icons_v1.0.0%29.svg.png" />
                         </a>
                     </div>
                 </div>

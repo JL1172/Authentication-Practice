@@ -149,10 +149,17 @@ img {
     width : 100%;
     height : 12rem;
     display : flex;
-    justify-content : center;
+    justify-content : space-evenly;
+    align-content : flex-start;
+    flex-direction : column;
     h3 {
         color : lavender;
     }
+    #social {
+        display : flex;
+        justify-content : center;
+        width: 100%;
+        align-items : center;
     img {
         width : 70px;
         height : 70px;
@@ -162,8 +169,18 @@ img {
             transition : .2s ease-in-out;
         }
     }
+    #second {
+        width : 40px;
+        height : 40px;
+        transition : .2s ease-in-out;
+        &:hover {
+            transform : scale(105%);
+            transition : .2s ease-in-out;
+        }
+    }
     a {
         font-size  : 16px;
     }
+}
 }
 `
