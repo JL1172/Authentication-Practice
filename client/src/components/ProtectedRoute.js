@@ -6,9 +6,10 @@ import Login from "./Login";
 import { useNavigate } from "react-router-dom";
 
 export default function PrivateRoute () {
+    const nav = useNavigate();
     return (
         <div>
-    { window.localStorage.getItem("token") ? <UserComponent /> : "No data"}
+    { window.localStorage.getItem("token") ? <UserComponent /> : "no data, return to login"}
     </div>
     )
 }
