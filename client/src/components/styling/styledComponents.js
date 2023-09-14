@@ -106,3 +106,64 @@ export const StyledForm = styled.div`
         }
     }
 `
+
+export const ProfileCard = styled.div`
+width : 30rem;
+height : 45rem;
+border-radius : 1rem;
+display : flex;
+flex-direction : column;
+justify-content : flex-start;
+align-items : flex-start;
+background-color : rgb(8, 21, 77);
+box-shadow : 0 0 2em lightgray; 
+#headline {
+    width : 100%;
+    margin-top : 1rem;
+    color : white;
+    background-color : royalblue;
+    color : lavender;
+}
+#profilePic {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    height :25rem;
+    width : 100%;
+    div {
+        margin-top : 2rem;
+        border-radius : 10px;
+        font-size : 16px;
+        color : lavender;
+        background-color : royalblue;
+        padding  : 1rem;
+    }
+}
+img {
+   width :10rem; 
+   border-radius : 10rem;
+}
+#main {
+    background-color : royalblue;
+    width : 100%;
+    height : 12rem;
+    display : flex;
+    justify-content : center;
+    h3 {
+        color : lavender;
+    }
+    img {
+        width : 70px;
+        height : 70px;
+        transition : .2s ease-in-out;
+        &:hover {
+            transform : scale(105%);
+            transition : .2s ease-in-out;
+        }
+    }
+    a {
+        font-size  : 16px;
+    }
+}
+`
